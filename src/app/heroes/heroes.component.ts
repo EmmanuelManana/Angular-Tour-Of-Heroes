@@ -11,7 +11,8 @@ import { HEROES } from '../mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes = HEROES;
+  heroes = HEROES; // points to the an array of interfaces
+  selectedHero: Hero; // points to the interface.
 
   constructor() { }
 
@@ -19,4 +20,7 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 }
