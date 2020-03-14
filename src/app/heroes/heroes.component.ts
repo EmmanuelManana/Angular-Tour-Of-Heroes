@@ -28,8 +28,9 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    // this will not work in a real app
-    this.heroes = this.heroService.getHeroes();
+    // subscribe to the ("heroService.getHeroes()") observable and fetch the heroes array.
+    this.heroService.getHeroes()
+        .subscribe(heroesArray => this.heroes = heroesArray);
   }
 
 
