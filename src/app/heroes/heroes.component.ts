@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero} from '../hero';
-import { HEROES } from '../mock-heroes';
-
+import { HeroService } from '../hero.service';
 
 // decorator function that specifies the Angular metadata for the component.
 @Component({
@@ -11,16 +10,28 @@ import { HEROES } from '../mock-heroes';
 })
 export class HeroesComponent implements OnInit {
 
-  heroes = HEROES; // points to the an array of interfaces
-  selectedHero: Hero; // points to the interface.
 
-  constructor() { }
+  heroes;
+  selectedHero: Hero;
 
-  // put initialization logic here
+  constructor(private heroService: HeroService) { }
+
+  // initialization logic
   ngOnInit(): void {
+    this.getHeroes();
   }
+
+
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
+
+  getHeroes(): void {
+    // this will not work in a real app
+    this.heroes = this.heroService.getHeroes();
+  }
+
+
+
 }
